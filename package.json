@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "redux-persist": "^6.0.0",
     "shortid": "^2.2.16"
   }
 }

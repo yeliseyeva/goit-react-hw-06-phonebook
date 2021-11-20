@@ -1,23 +1,23 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import contactActions from "../../redux/contacts-actions";
+import { getFilter } from "../../redux/selectors";
 
-function Filter ({value, changeFilter}) {
-    return (
-        <input
-            type="text"
-            placeholder="Find contacts by name"
-            value={value}
-            onChange={changeFilter}
-            name="name"
-            required
-            autoComplete="off"
-        />
-    )
-}
+function Filter() {
+  const value = useSelector(getFilter);
+  const dispatch = useDispatch();
 
-Filter.propTypes = {
-    value: PropTypes.string.isRequired,
-    changeFilter: PropTypes.func.isRequired
+  return (
+    <input
+      type="text"
+      placeholder="Find contacts by name"
+      value={value}
+      onChange={(e) => dispatch(contactActions.changeFilter(e.target.value))}
+      name="name"
+      required
+      autoComplete="off"
+    />
+  );
 }
 
 export default Filter;
